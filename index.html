@@ -1,157 +1,102 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta name="generator" content=
-  "HTML Tidy for HTML5 for Linux version 5.8.0">
-  <title>Login VulBox</title>
+<!-- https://www.youtube.com/watch?v=x5trGVMKTdY&list=PLhQjrBD2T380xvFSUmToMMzERZ3qB5Ueu&index=8 -->
+<html lang="en">
+    <head>
+        <title>Reise Blog</title>  
+        <link rel="stylesheet" href="/reise_blog/reise_blog.css">
+        <link rel="stylesheet" href="woff.css">
+        <meta charset="utf-8">
+    </head>
+        <body>
+            <h1> Reise Blog</h1>
+            
+            
 
-</head>
-<body>
-  <h2>VulBox file browser</h2>
-  <form id ="uploadElem">
-    <input type="text" id="text-input" placeholder="Place">
-    <input type="button" onclick="getTemperature();" id="text-input" value="Search">
-  </form>
-  <form id ="uploadElem">
-    <input type="text" id="text-input2" placeholder="Place">
-    <input type="button" onclick="getPercipitation();" id="text-input2" value="Search">
-  </form>
+            <ol>
+            <li> Inspiration</li>
+            <li>Camper</li>
+            <li> Juni </li>
+            <li> <a href="#Juli23">Juli </a></li>
+        </ol>
+            <li> August</li>
 
-  <h3> Important Resources</h3>
+            <h3>Inspiration</h3>
+            <p> Wir haben unsere Quellen von <a target="_blank" href="https://lets-get-otter-here.com/" title="Reiseblog bis Thailand"> Otter</a> <br> Klicke <a href="https://lets-get-otter-here.com/#post-13703" title="Batterie"> hier </a> um auf den Batterienartikel zu springen </p>
+            
+            <h3> Camper</h3>
+            <p> Eine Übersicht, welche Camper für uns in Frage kamen, gibt es <a href="sonstiges/camper.html"> hier.</a></p>
+            <h3>Juni</h3>
+            <p>
+               Im Ersten Monat <a href="juni/juni.html" title="Was im Juni passiert ist"> Juni</a> ist folgendes passiert: 
+            </p>
+            <blockquote>
+                bla bla <br>
+                bla bla bla <br>
+                bla bla bla bla 
+            </blockquote>
+            <h3 id="Juli23"> Juli</h3>
 
-  <a href="https://api.met.no/weatherapi/locationforecast/2.0/#/"> Weather</a>
-  <a href="https://api.met.no/doc/ForecastJSON"> Weather</a>
-  <br>
-  <a href="https://geocode.maps.co/"> geolocationAPI</a>
-  <a href="https://openweathermap.org/api/geocoding-api"> geolocationAPI</a>
-  <br>
-  <a href="https://www.gpskoordinaten.de/"> gpskoordinaten</a>
-<p>Your are in: /{{path_dir}}</p>
-  <footer>
-    <p>© Felix Schärtl</p>
-  </footer>
-
-
-  <script>
-
-      async function getInputValue(lat, lon) {
-        // Selecting the input element and get its value 
-        // Displaying the value
-        // alert(inputVal);
-
-        /* Split input in two lat and lon
-        var arr = inputVal.split(" ");
-        console.log(`${arr[0]} and ${arr[1]}`);
-        */
-               
-        let url = 'https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=' + lat + '&lon=' + lon;
-        //let url = 'https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=49.67&lon=12.17';
+            <h3 id ="August23"> August</h3>
 
 
-        let response = await fetch(url);
-        let commits = await response.json(); // read response body and parse as JSON
+            <h3 id ="September23"> September</h3>
 
+
+            <h3 id ="Oktober23"> November</h3>
+
+
+            <h3> Meinungen </h3>
+
+            <h4>Camper</h4>
         
-        //let json = JSON.stringify(commits);
-        //console.log(json);
-      
-        /*
-        console.log(commits["properties"]["meta"]["units"]["air_pressure_at_sea_level"]);
-        console.log(Object.keys(commits["properties"]));
-        console.log(`Coordinates: ${commits["geometry"]["coordinates"]}`);
-        console.log(`Update: ${commits["properties"]["meta"]["updated_at"]}`);
-        */
+            <select name="camper">
+                <p>
+                <option value="Pössl Vario 499">Pössl Vario 499</option>
+                <option value="Pössl Vario 545">Pössl Vario 545</option>
+                <option value="Pössl Concorde Compact">Pössl Concorde Compact</option>
+                <br>
+                <input type="submit" value="Submit">
+                </p>
+            </select>
 
-        //console.log(commits["properties"]["timeseries"][0]["data"]["next_6_hours"]["details"]["precipitation_amount"]);
+            <h4 id="opinion"> Monat</h4>
 
-        return commits;
+            <form action="https://www.someside.com/test.js" method = "POST">
+           
+            <p>
+            <input type="checkbox" name="monat1" id ="monate1" value ="Juni"> 
+            <label for="monat1"> Juni</label>
+            <br>
+            <input type="checkbox" name="monat2" id="monat2" value ="Juli">
+            <label for="monat2"> Juli</label>
+            <br>
+            <input type="checkbox" name="monat3" id="monat3" value ="August">
+            <label for="monat3"> August</label>
+            <br>
+                <input type="submit" value ="Submit">
+            </p>
+            </form>
+            <h4 id ="comments"> Kommentare</h4>
 
-      };
-
-      async function geolocation(lat, let){
-
-        let url = 'https://geocode.maps.co/reverse?lat=' + lat + '&lon=' + let;
-
-        let response = await fetch(url);
-        let commits = await response.json(); // read response body and parse as JSON
-
-        return commits;
-
-      }
-
-
-      async function getTemperature(){
-
-
-        let inputVal = document.getElementById("text-input").value;
-
-        var arr = inputVal.split(" ");
-
-        var lat = parseFloat(arr[0].replace(".", "."));
-        var let = parseFloat(arr[1].replace(".", "."));
-
-        for (t = 0; t<=5; t++){
-          for (k = 0; k <= 5; k++){
-
-            lat = lat + 1/20;
-            let = let + 1/20;
-            let geo_data = await geolocation(lat, let);
-            let data = await getInputValue(lat, let);
-
-            let temp = [0, 0,0];
             
-            for (let j = 0; j <= 2; j++){
-              for (let i = 4; i <= 8; i++) {
-                temp[j] = temp[j] + data["properties"]["timeseries"][i+j*24]["data"]["instant"]["details"]["air_temperature"];
-              }
-            }
-            console.log(`Place: ${geo_data["address"]["county"]} (Lat: ${lat}, Let: ${let}`);
+            <form action="sonstiges/camper.html" method ="POST">
 
-            for (let k = 0; k<=2; k++){
-              console.log(`Average Temperature for the ${data["properties"]["timeseries"][k+k*24]["time"].slice(0,10)} is: ${temp[k]/5}`);
-            }
-          }
-        }
-      };
-
-
-
-
-      async function getPercipitation(){
-
-
-        let inputVal = document.getElementById("text-input2").value;
-
-        var arr = inputVal.split(" ");
-
-        var lat = parseFloat(arr[0].replace(".", "."));
-        var let = parseFloat(arr[1].replace(".", "."));
-
-        for (t = 0; t<=5; t++){
-          for (k = 0; k <= 5; k++){
-
-            lat = lat + 1/20;
-            let = let + 1/20;
-            let geo_data = await geolocation(lat, let);
-            let data = await getInputValue(lat, let);
-
-            let perc = [0, 0 ];
+            <p>
+            Name: <input type="text" name="name" value=""> <br>
+            Kommentar: <br> <textarea name="coments" rows="10" cols="48"> </textarea> <br>
+                        <input type="submit" value="Submit">
+            </p>
+            </form>
             
-            for (let j = 0; j <= 2; j++){
-              for (let i = 4; i <= 8; i++) {
-                perc[j] = perc[j] + data["properties"]["timeseries"][i+j*24]["data"]["next_6_hours"]["details"]["precipitation_amount"];
-              }
-            }
-            console.log(`Place: ${geo_data["address"]["county"]} (Lat: ${lat}, Let: ${let}`);
+            <br>
+            <br>
 
-            for (let k = 0; k<=2; k++){
-              console.log(`Average Percipitation for the ${data["properties"]["timeseries"][k+k*24]["time"].slice(0,10)} is: ${perc[k]/5}`);
-            }
-          }
-        }
-      }
 
-  </script>
-</body>
+
+            <h6> Diese Überschrift ist dazu da um Wuffs zu testen.</h6>
+
+
+<a href="#top"> Back to top</a>
+        </body>
+
 </html>
-
